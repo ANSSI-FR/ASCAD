@@ -26,9 +26,8 @@ scripts of this repository are placed into the public domain.
 
 ### Quick start guide
 
-The scripts and the data are split in two repositories mainly
-because of the way git handles large files (see the section about
-[Git LFS](#git-lfs) for more information).
+The scripts and the data are split in two places mainly
+because git is not suited for large files.
 
 In order to get everything up and running, here are the steps to follow
 (we provide the steps using a Unix shell syntax, but you can adapt this
@@ -39,27 +38,17 @@ and use your favorite shell of course):
 $ git clone https://github.com/ANSSI-FR/ASCAD.git
 </pre>
 
-2. In the new `ASCAD` folder, clone the foreign repository
-with the raw data by using:
+2. In the new `ASCAD` folder, download and decompress the data
+package with the raw data by using:
 <pre>
 $ cd ASCAD
-$ git clone https://github.com/prouff/ASCAD_data.git
+$ wget http://data.ascad-databases.ovh/ASCAD_data.zip
+$ unzip ASCAD_data.zip
 </pre>
 
-3. In the `ASCAD_data` folder, you have to fetch the
-large files using Git LFS since only the references
-to them have been downloaded during the cloning
-operation. Please be aware that this last step should 
-**download around 7.5 GB of useful data**, but you must
-have around **15 GB of free space** because of the git
-management files (you will however be able to get rid of
-the `.git` folder after the useful data have been downloaded):
-<pre>
-$ cd ASCAD_data
-$ git lfs pull
-</pre>
-Details on how to configure Git LFS are provided in
-the [dedicated section](#git-lfs).
+Please be aware that this last step should 
+**download around 4.2 GB**, and the decompression will
+generate around **7.3 GB of useful data**.
 
 Now you should be able to use the provided python scripts.
 If you have the `pip` Python package manager installed, getting 
@@ -88,14 +77,22 @@ $ python ASCAD_test_models.py
 
 More details are provided in the [dedicated section](#ascad-companion-scripts).
 
-### The raw data git repository
+### Raw data files hashes
 
 The current repository **only contains scripts**: the raw data that
-are manipulated by these scripts can be found on the following
-repository: [ASCAD_data](https://github.com/prouff/ASCAD_data).
+are manipulated by these scripts can be found here:
+[ASCAD_data](http://data.ascad-databases.ovh/ASCAD_data.zip).
 
-We provide the SHA-256 hash values of the raw data files on the foreign
-git repository so that their integrity can be checked:
+The zip file SHA-256 hash value is:
+<hr>
+
+**ASCAD_data.zip**
+`a6884faf97133f9397aeb1af247dc71ab7616f3c181190f127ea4c474a0ad72c`
+
+</hr>
+
+We also provide the SHA-256 hash values of the sub-files when this
+zip archive is decompressed:
 
 <hr>
 
@@ -105,12 +102,8 @@ git repository so that their integrity can be checked:
 `8716a01d4aea2df0650636504803af57dd597623854facfa75beae5a563c0937`
 **ASCAD_databases/ASCAD_desync100.h5:**
 `f6b9e967af287e82f0a152320e58f8f0ded35cd74d499b5f7b1505a5ce338b8e`
-**ASCAD_databases/ATMega8515_raw_traces.h5.part1:**
-`4524f4a8c572f0d99f5aaae933fa3f2df5cc1935a742872d6d534bd7a9d08fe4`
-**ASCAD_databases/ATMega8515_raw_traces.h5.part2:**
-`22f1672dab2145e843135a85dfd73b1ec04a0c5e0c7c4607fb07283a113be66b`
-**ASCAD_databases/ATMega8515_raw_traces.h5.part3:**
-`b6bd4d0ffd236bca8f60f965b827344152c9cc86b9dd2abffce87502a2ccbcb4`
+**ASCAD_databases/ATMega8515_raw_traces.h5:**
+`51e722f6c63a590ce2c4633c9a9534e8e1b22a9cde8e4532e32c11ac089d4625`
 <hr>
 
 **ASCAD_trained_models/mlp_best_ascad_desync0_node200_layernb6_epochs200_classes256_batchsize100.h5:**
@@ -127,40 +120,8 @@ git repository so that their integrity can be checked:
 `866d3ea0e357e09ff30fdc9c39b6ef3096262c50cebd42018a119b1190339fcc`
 <hr>
 
-### <a name="git-lfs"></a> Git LFS
-Since git is not well suited for very large files, we have decided
-to use [Git LFS](https://git-lfs.github.com/) (for Large File Support) 
-to manage our data files.
-
-The support of LFS has been around for some time now on github, so this
-should be almost transparent for users: minor quirks have to be managed
-in order to use LFS though (see below).
-
-On the git client side, one has to fetch a client that supports git
-LFS (these are packaged on most Linux distributions, and can be downloaded
-from the [Git LFS](https://git-lfs.github.com/) website for Windows and
-other Operating Systems).
-
-Once the git LFS aware client is installed, fetching all the references
-is as simple as a regular `git clone` or `git pull`. However, for large 
-files only **pointers** to the real files are downloaded. In order to 
-fetch the files themselves, one will have to execute:
-
-<pre>
-$ git lfs pull
-</pre>
-
-Finally, since LFS only supports maximum 2 GB files sizes, we had to split
-one of the large files that exceeded this limit (see below).
-
-Please refer to the [github resource](https://help.github.com/articles/versioning-large-files/)
-for more details about its interactions with LFS.
-
-
-<hr>
-
 > **WARNING: all the paths and examples that are provided below suppose that you have
-cloned the raw data repository as explained in [the previous section](#getting-ascad).**
+downloaded and decompressed the raw data file as explained in [the previous section](#getting-ascad).**
 
 <hr>
 
@@ -180,23 +141,9 @@ specific hardware countermeasure has been activated on the ATMega8515.
 
 An extract of 60,000 traces from the acquisition campaign has been compiled in one 
 [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) file
-of 5.6 GB named `ATMega8515_raw_traces.h5`. Because of its size and
-the limits of git LFS, this file has been split in three parts that 
-don't exceed 2 GB:
-  * `ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part1`
-  * `ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part2`
-  * `ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part3`
-
-Recovering the original database once you have cloned and pulled the
-large files as explained in the [previous section](#git-lfs) is as simple as:
-
-<pre>
-$ cat ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part1 ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part2 ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5.part3 > ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5
-</pre>
-
-You can of course use any other merging tool. The structure of the HDF5 
-file is described in the article ["Study of Deep Learning Techniques for
-Side-Channel Analysis and Introduction to ASCAD Database"](https://eprint.iacr.org/2018/053.pdf).
+of 5.6 GB named `ATMega8515_raw_traces.h5`. The structure of this HDF5 file is 
+described in the article ["Study of Deep Learning Techniques for Side-Channel 
+Analysis and Introduction to ASCAD Database"](https://eprint.iacr.org/2018/053.pdf).
 
 ## The ASCAD database
 
