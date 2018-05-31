@@ -54,9 +54,9 @@ Now you should be able to use the provided python scripts.
 If you have the `pip` Python package manager installed, getting 
 the scripts dependencies is as simple as:
 <pre>
-$ pip install keras numpy h5py matplotlib 
+$ pip install keras numpy h5py matplotlib tensorflow
 for Python 2, or:
-$ pip3 install keras numpy h5py matplotlib
+$ pip3 install keras numpy h5py matplotlib tensorflow
 for Python 3.
 </pre>
 
