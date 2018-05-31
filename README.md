@@ -42,7 +42,7 @@ $ git clone https://github.com/ANSSI-FR/ASCAD.git
 package with the raw data by using:
 <pre>
 $ cd ASCAD
-$ wget http://data.ascad-databases.ovh/ASCAD_data.zip
+$ wget https://www.data.gouv.fr/s/resources/ascad/20180530-163000/ASCAD_data.zip
 $ unzip ASCAD_data.zip
 </pre>
 
