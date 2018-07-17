@@ -22,6 +22,10 @@ scripts of this repository are placed into the public domain.
   * Emmanuel PROUFF (<mailto:emmanuel.prouff@ssi.gouv.fr>)
   * Rémi STRULLU (<mailto:remi.strullu@ssi.gouv.fr>)
 
+## Acknowledgements
+
+This work has been partially funded through the H2020 project REASSURE.
+   
 ## <a name="getting-ascad"> Getting the ASCAD databases and the trained models 
 
 ### Quick start guide
