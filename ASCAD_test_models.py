@@ -67,11 +67,11 @@ def rank(predictions, metadata, real_key, min_trace_idx, max_trace_idx, last_key
 					print("Error: got a prediction with only zeroes ... this should not happen!")
 					sys.exit(-1)
 				min_proba = min(min_proba_predictions)
-				key_bytes_proba[i] += np.log(min_proba**2)
+				key_bytes_proba[i] += np.log(min_proba/2) #or divided by a larger
 	# Now we find where our real key candidate lies in the estimation.
 	# We do this by sorting our estimates and find the rank in the sorted array.
 	sorted_proba = np.array(list(map(lambda a : key_bytes_proba[a], key_bytes_proba.argsort()[::-1])))
-	real_key_rank = np.where(sorted_proba == key_bytes_proba[real_key])[0][0]
+	real_key_rank = np.where(sorted_proba == key_bytes_proba[real_key])[-1][-1]
 	return (real_key_rank, key_bytes_proba)
 
 def full_ranks(model, dataset, metadata, min_trace_idx, max_trace_idx, rank_step):
