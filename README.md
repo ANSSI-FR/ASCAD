@@ -85,7 +85,7 @@ More details are provided in the [dedicated section](#ascad-companion-scripts).
 
 The current repository **only contains scripts**: the raw data that
 are manipulated by these scripts can be found here:
-[ASCAD_data](http://data.ascad-databases.ovh/ASCAD_data.zip).
+[ASCAD_data](https://www.data.gouv.fr/s/resources/ascad/20180530-163000/ASCAD_data.zip).
 
 The zip file SHA-256 hash value is:
 <hr>
