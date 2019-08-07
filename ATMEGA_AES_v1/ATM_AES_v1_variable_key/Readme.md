@@ -16,8 +16,8 @@ $ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/2019
 $ mv ascad-variable-desync100.h5 ASCAD_desync100.h5
 </pre>
 
-Please be aware that this last step should **download around 71 GB** of data.
-You can selectively download the extracted databases (`https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190730-071619/ascad-variable.h5`
+Please be aware that all these steps should **download around 71 GB** of data.
+You can selectively download only the extracted databases (`https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190730-071619/ascad-variable.h5`
 and so on) that weight a more reasonable 281 MB each.
 
 ### Raw data files hashes
