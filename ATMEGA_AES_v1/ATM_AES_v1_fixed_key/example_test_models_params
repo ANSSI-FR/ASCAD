@@ -1,0 +1,5 @@
+{
+"ascad_database" : "ATMEGA_AES_v1/ATM_AES_v1_fixed_key/ASCAD_data/ASCAD_databases/ASCAD_fixed.h5",
+"model_file": "ATMEGA_AES_v1/ATM_AES_v1_fixed_key/ASCAD_data/ASCAD_trained_models/cnn_best_ascad_desync0_epochs75_classes256_batchsize200.h5",
+"num_traces": 1000
+}

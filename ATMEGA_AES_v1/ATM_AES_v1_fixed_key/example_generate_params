@@ -1,0 +1,9 @@
+{
+"traces_file" : "ATMEGA_AES_v1/ATM_AES_v1_fixed_key/ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5",
+"labeled_traces_file" : "ATMEGA_AES_v1/ATM_AES_v1_fixed_key/ASCAD_data/ASCAD_databases/ASCAD_fixed.h5",
+"profiling_index" : [n for n in range(0,50000)],
+"attack_index" : [n for n in range(50000,60000)],
+"target_points" : [n for n in range(45400,46100)],
+"profiling_desync" : 0,
+"attack_desync" : 0
+}

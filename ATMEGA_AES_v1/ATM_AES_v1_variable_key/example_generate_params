@@ -1,0 +1,9 @@
+{
+"traces_file" : "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases/ATMega8515_raw_traces.h5",
+"labeled_traces_file" : "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases/ASCAD_variable_desync100.h5",
+"profiling_index" : [n for n in range(0, 300000) if n%3 !=2],
+"attack_index" : [n for n in range(2,3000,3)],
+"target_points" : [n for n in range(80945, 80945+1400)],
+"profiling_desync" : 0,
+"attack_desync" : 100
+}
