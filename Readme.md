@@ -50,8 +50,8 @@ git clone https://github.com/ANSSI-FR/ASCAD.git
 
 | Implementation | Campaign     | Type        | Link  |
 | ------------------------ |:-------------:| -----: | :----: |
-| ATMEGA boolean masked AES | fixed key    | Power (Icc) | [link](./ASCAD/ATMEGA_AES_v1/ATM_AES_v1_fixed_key/Readme.md) |
-| ATMEGA boolean masked AES | variable key | Power (Icc) | [link](./ASCAD/ATMEGA_AES_v1/ATM_AES_v1_variable_key/Readme.md) |
+| ATMEGA boolean masked AES | fixed key    | Power (Icc) | [link](./ATMEGA_AES_v1/ATM_AES_v1_fixed_key/Readme.md) |
+| ATMEGA boolean masked AES | variable key | Power (Icc) | [link](./ATMEGA_AES_v1/ATM_AES_v1_variable_key/Readme.md) |
 
 3. Now you should be able to use the provided python scripts. If you have the `pip` Python package manager installed, getting the scripts dependencies is as simple as:
 ```
