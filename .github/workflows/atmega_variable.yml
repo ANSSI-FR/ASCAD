@@ -1,0 +1,57 @@
+name: ascad_atmega_variable
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+
+jobs:
+  distro_package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+    steps:
+      # Checkout repository
+      - name: checkout repository
+        uses: actions/checkout@v2
+      # Run actions
+      - name: set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: tests
+        env:
+            python-version: ${{ matrix.python-version }}
+            ATM_AES_v1_variable_key: 1
+        shell: bash
+        run: |
+          df -h
+          free -h
+          # 0) Checkout current branch
+          git checkout ${GITHUB_REF##*/}
+          # 1) Install necessary packages
+          # Fix specific Python 3.6 and 3.7 tensorflow h5py dependency
+          if [[ ${python-version} == 3.6 ]]; then pip install h5py==2.10.0; fi
+          if [[ ${python-version} == 3.7 ]]; then pip install h5py==2.10.0; fi
+          pip install keras numpy h5py matplotlib tensorflow tqdm
+          # 2) Handle swapiness
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+          #######################################################################
+          #### Testing ATMEGA_AES_v1/ATM_AES_v1_variable_key/
+          #######################################################################
+          # First download elements
+          # Download the extracted databases
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ && mkdir -p ASCAD_data/ASCAD_databases && cd -; fi
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo "Downloading ascad-variable.h5" && cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases && wget -q https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-083349/ascad-variable.h5 && mv ascad-variable.h5 ASCAD.h5 && cd -; fi
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo "Downloading ascad-variable-desync50.h5" && cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases && wget -q https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-084119/ascad-variable-desync50.h5 && mv ascad-variable-desync50.h5 ASCAD_desync50.h5 && cd -; fi
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo "Downloading ascad-variable-desync100.h5" && cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases && wget -q https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-084306/ascad-variable-desync100.h5 && mv ascad-variable-desync100.h5 ASCAD_desync100.h5 && cd -; fi
+          # Download the models
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ && mkdir -p ASCAD_data/ASCAD_trained_models && cd -; fi
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo "Downloading cnn2-ascad-desync0.h5" && cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_trained_models/ && wget -q https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190801-132322/cnn2-ascad-desync0.h5 && cd -; fi
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo "Downloading cnn2-ascad-desync50.h5" && cd ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_trained_models/ && wget -q https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190801-132406/cnn2-ascad-desync50.h5 && cd -; fi
+          # Test the models
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then echo -ne '\n' | python ASCAD_test_models.py ATMEGA_AES_v1/ATM_AES_v1_variable_key/example_test_models_params; fi
+          # Train the models
+          if [ "${ATM_AES_v1_variable_key}" == 1 ]; then (timeout 60 python ASCAD_train_models.py ATMEGA_AES_v1/ATM_AES_v1_variable_key/example_train_models_params || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi); fi

@@ -1,0 +1,11 @@
+{
+"multilabel":1,
+"validation_split": 0.05,
+"ascad_database": "STM32_AES_v2/ASCAD_data/ASCAD_databases/ascadv2-extracted.h5",
+"training_model": "STM32_AES_v2/ASCAD_data/ASCAD_trained_models/ascadv2-multi-resnet-earlystopping.h5",
+"network_type": "multi_resnet",
+"epochs": 60,
+"batch_size": 64,
+"early_stopping" : 1,
+"train_len": 420000 
+}

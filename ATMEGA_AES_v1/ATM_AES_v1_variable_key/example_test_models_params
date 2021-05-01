@@ -1,5 +1,5 @@
 {
-"model_file": "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_trained_models/mlp_best_ascad_desync0_node200_layernb6_epochs200_classes256_batchsize100.h5",
-"ascad_database": "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases/ASCAD_variable.h5",
+"model_file": "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_trained_models/cnn2-ascad-desync0.h5",
+"ascad_database": "ATMEGA_AES_v1/ATM_AES_v1_variable_key/ASCAD_data/ASCAD_databases/ASCAD.h5",
 "num_traces": 1000
 }

@@ -1,0 +1,52 @@
+name: ascad_atmega_fixed
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+
+jobs:
+  distro_package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+    steps:
+      # Checkout repository
+      - name: checkout repository
+        uses: actions/checkout@v2
+      # Run actions
+      - name: set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: tests
+        env:
+            python-version: ${{ matrix.python-version }}
+            ATM_AES_v1_fixed_key: 1
+        shell: bash
+        run: |
+          df -h
+          free -h
+          # 0) Checkout current branch
+          git checkout ${GITHUB_REF##*/}
+          # 1) Install necessary packages
+          # Fix specific Python 3.6 and 3.7 tensorflow h5py dependency
+          if [[ ${python-version} == 3.6 ]]; then pip install h5py==2.10.0; fi
+          if [[ ${python-version} == 3.7 ]]; then pip install h5py==2.10.0; fi
+          pip install keras numpy h5py matplotlib tensorflow tqdm
+          # 2) Clean stuff, handle swapiness
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+          #######################################################################
+          #### Testing ATMEGA_AES_v1/ATM_AES_v1_fixed_key/
+          #######################################################################
+          # First download and extract the database if it has not been downloaded
+          if [ "${ATM_AES_v1_fixed_key}" == 1 ]; then echo "Downloading ASCAD_data.zip" && cd ATMEGA_AES_v1/ATM_AES_v1_fixed_key/ && wget -q -O /tmp/ASCAD_data.zip https://www.data.gouv.fr/s/resources/ascad/20180530-163000/ASCAD_data.zip; fi
+          if [ "${ATM_AES_v1_fixed_key}" == 1 ]; then echo "Unzipping ASCAD_data.zip" && rm -rf ASCAD_data && unzip /tmp/ASCAD_data.zip && rm /tmp/ASCAD_data.zip && cd -; fi
+          # Test the database extraction
+          if [ "${ATM_AES_v1_fixed_key}" == 1 ]; then python ASCAD_generate.py ATMEGA_AES_v1/ATM_AES_v1_fixed_key/example_generate_params; fi
+          # Test the model
+          if [ "${ATM_AES_v1_fixed_key}" == 1 ]; then echo -ne '\n' | python ASCAD_test_models.py ATMEGA_AES_v1/ATM_AES_v1_fixed_key/example_test_models_params; fi
+          # Train the model but early stop since we do not have a GPU here!
+          if [ "${ATM_AES_v1_fixed_key}" == 1 ]; then (timeout 60 python ASCAD_train_models.py ATMEGA_AES_v1/ATM_AES_v1_fixed_key/example_train_models_params || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi); fi

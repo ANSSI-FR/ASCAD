@@ -1,0 +1,8 @@
+{
+"simulated_key":1,
+"multilabel": 2,
+#"save_file": "fig-multiresnet-wo-permind-earlystopping.png",
+"model_file": "STM32_AES_v2/ASCAD_data/ASCAD_trained_models/ascadv2-multi-resnet-wo-permind-earlystopping.h5",
+"ascad_database": "STM32_AES_v2/ASCAD_data/ASCAD_databases/ascadv2-extracted.h5",
+"num_traces": 250
+}
