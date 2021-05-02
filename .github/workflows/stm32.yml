@@ -8,6 +8,7 @@ jobs:
   distro_package:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 5
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
         stm32_test_type: [0, 1]
