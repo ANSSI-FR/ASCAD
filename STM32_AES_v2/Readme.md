@@ -40,7 +40,7 @@ $ wget https://static.data.gouv.fr/resources/ascadv2/20210409-105237/ascadv2-mul
 $ unzip ascadv2-multi-resnet-earlystopping.zip
 $ unzip ascadv2-multi-resnet-wo-permind-earlystopping.zip
 </pre>
-The first model corresponds to a multitask ResNet model that predicts all the intermediate mask values (multiplicative mask, additive mask, shuffled masked sbox output for each index i in [1..16], shuffle index for i in [1..16]). The second model ignores that the implementation has shuffled the sbox outputs and classifies directly the multiplicative mask, additive mask, and the masked sbox outputs without shuffle. More details about the two models may be found in the presentation done for the "GDR SoC2 et Sécurité informatique" ([video](https://mediacenter3.univ-st-etienne.fr/videos/?video=MEDIA201125165945975)).
+The first model corresponds to a multitask ResNet model that predicts all the intermediate mask values (multiplicative mask, additive mask, shuffled masked sbox output for each index i in [1..16], shuffle index for i in [1..16]). The second model ignores that the implementation has shuffled the sbox outputs and classifies directly the multiplicative mask, additive mask, and the masked sbox outputs without shuffle. More details about the methodology and the two models may be found in our [eprint article](https://eprint.iacr.org/2021/592).
 
 ## Test the trained models
 
