@@ -5,7 +5,7 @@
 In the new folder, download and decompress the data package with the raw data by using:
 <pre>
 $ cd ASCAD/ATMEGA_AES_v1/ATM_AES_v1_fixed_key/
-$ wget https://www.data.gouv.fr/s/resources/ascad/20180530-163000/ASCAD_data.zip
+$ wget https://www.data.gouv.fr/api/1/datasets/r/e7ab6f9e-79bf-431f-a5ed-faf0ebe9b08e -O ASCAD_data.zip
 $ unzip ASCAD_data.zip
 </pre>
 
