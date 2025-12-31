@@ -10,15 +10,15 @@ In the new folder, first download the data packages with the raw data by using:
 $ cd STM32_AES_v2
 $ mkdir -p ASCAD_data/ASCAD_databases
 $ cd ASCAD_data/ASCAD_databases
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-extracted.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces1.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces2.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces3.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces4.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces5.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces6.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces7.h5
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-stm32-conso-raw-traces8.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/a6cf925c-079c-4468-a723-d94bce6c31f8 -O ascadv2-extracted.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/78697eec-7adf-4f68-bffa-b55640b40478 -O ascadv2-stm32-conso-raw-traces1.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/b3a41a00-3552-40a6-a18e-d7f1b97596ae -O ascadv2-stm32-conso-raw-traces2.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/b3775bf7-8657-4b02-964c-7cafa3ff8d06 -O ascadv2-stm32-conso-raw-traces3.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/4f489a9c-70d8-487f-ad95-5ce2a6af9cdd -O ascadv2-stm32-conso-raw-traces4.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/98988df2-80ec-4f0a-af8f-32b38ccd742e -O ascadv2-stm32-conso-raw-traces5.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/651a3ba2-bced-4f3b-8287-a40935b4e60f -O ascadv2-stm32-conso-raw-traces6.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/8f32464b-6bdf-4720-9890-b7048e9822f1 -O ascadv2-stm32-conso-raw-traces7.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/bea66e8a-75c2-43c3-ae38-f4dc26ae2df5 -O ascadv2-stm32-conso-raw-traces8.h5
 </pre>
 
 Please be aware that all these steps should **download around 807 GB** of data.
