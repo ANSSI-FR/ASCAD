@@ -6,18 +6,18 @@ In the new folder, download the data packages with the raw data by using:
 $ cd ASCAD/ATMEGA_AES_v1/ATM_AES_v1_variable_key/
 $ mkdir -p ASCAD_data/ASCAD_databases
 $ cd ASCAD_data/ASCAD_databases
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190730-071646/atmega8515-raw-traces.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/3217dcc0-184f-402b-8914-e31cc120c51c -O atmega8515-raw-traces.h5
 $ mv atmega8515-raw-traces.h5 ATMega8515_raw_traces.h5
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-083349/ascad-variable.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/b4ace767-c2a4-4db4-8e01-4527b5b91f00 -O ascad-variable.h5
 $ mv ascad-variable.h5 ASCAD.h5
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-084119/ascad-variable-desync50.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/4ad6d44a-f6de-483f-807f-d0ccab76d2a9 -O ascad-variable-desync50.h5
 $ mv ascad-variable-desync50.h5 ASCAD_desync50.h5
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-084306/ascad-variable-desync100.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/f1936388-71be-408f-b8ec-472bb3398e39 -O ascad-variable-desync100.h5
 $ mv ascad-variable-desync100.h5 ASCAD_desync100.h5
 </pre>
 
 Please be aware that all these steps should **download around 71 GB** of data.
-You can selectively download only the extracted databases (`https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190903-083349/ascad-variable.h5`
+You can selectively download only the extracted databases (`wget https://www.data.gouv.fr/api/1/datasets/r/b4ace767-c2a4-4db4-8e01-4527b5b91f00 -O ascad-variable.h5`
 and so on) that weight a more reasonable 418 MB each.
 
 ### Raw data files hashes
@@ -74,12 +74,12 @@ You can generate new databases with random desynchronization using the [ASCAD_ge
 The best **trained CNN models** that we have obtained are provided and can be downloaded using the following URLs:
 
 <pre>
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190801-132322/cnn2-ascad-desync0.h5
-$ wget https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190801-132406/cnn2-ascad-desync50.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/df7e333d-745d-414f-a5fc-bf47ce3a97f2 -O cnn2-ascad-desync0.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/763b4c7a-c9fa-4798-ab97-681f3b72177d -O cnn2-ascad-desync50.h5
 </pre>
 
 
-Two models have been selected: best CNN for desynchronizations 0 (`cnn2-ascad-desync0.h5`) and best CNN for desynchronizations 50 (`https://static.data.gouv.fr/resources/ascad-atmega-8515-variable-key/20190801-132406/cnn2-ascad-desync50.h5`).
+Two models have been selected: best CNN for desynchronizations 0 (`cnn2-ascad-desync0.h5`) and best CNN for desynchronizations 50 (`cnn2-ascad-desync50.h5`).
 
 
 **WARNING**: these models are the best ones we have obtained through the methodology described in the article. We certainly **do not pretend** that they are the optimal models  across all the possible ones. The main purpose of sharing ASCAD is precisely to explore and evaluate new models.
