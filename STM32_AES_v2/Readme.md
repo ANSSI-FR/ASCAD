@@ -26,7 +26,7 @@ You can selectively download only the [extracted database](https://files.data.go
 
 
 <pre>
-$ wget https://files.data.gouv.fr/anssi/ascadv2/ascadv2-extracted.h5
+$ wget https://www.data.gouv.fr/api/1/datasets/r/a6cf925c-079c-4468-a723-d94bce6c31f8 -O ascadv2-extracted.h5
 </pre>
 
 
@@ -35,8 +35,8 @@ Once this step is over, you can download the trained models:
 <pre>
 $ mkdir ../ASCAD_trained_models
 $ cd ../ASCAD_trained_models
-$ wget https://static.data.gouv.fr/resources/ascadv2/20210408-165909/ascadv2-multi-resnet-earlystopping.zip
-$ wget https://static.data.gouv.fr/resources/ascadv2/20210409-105237/ascadv2-multi-resnet-wo-permind-earlystopping.zip
+$ wget https://www.data.gouv.fr/api/1/datasets/r/a4eeef49-2c6a-40e3-9e8e-f8ecccb52974 -O ascadv2-multi-resnet-earlystopping.zip
+$ wget https://www.data.gouv.fr/api/1/datasets/r/c26d7e7c-f1ff-4ba0-9384-983bf62d00e4 -O ascadv2-multi-resnet-wo-permind-earlystopping.zip
 $ unzip ascadv2-multi-resnet-earlystopping.zip
 $ unzip ascadv2-multi-resnet-wo-permind-earlystopping.zip
 </pre>
